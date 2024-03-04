@@ -15,10 +15,10 @@ export default class Field {
 
     this.fieldEl = document.createElement("div");
     this.fieldEl.classList.add("field");
-    
+
     this.fieldEl.addEventListener("click", this.attack.bind(this));
-    this.fieldEl.addEventListener("mouseover", this.setCursor);
-    this.fieldEl.addEventListener("mouseout", this.setCursor);    
+    this.fieldEl.addEventListener("mouseover", this.setCursor.bind(this));
+    this.fieldEl.addEventListener("mouseout", this.setCursor.bind(this));
 
     for (let i = 0; i < this.fieldSize * this.fieldSize; i += 1) {
       const cellEl = document.createElement("div");
@@ -35,9 +35,11 @@ export default class Field {
   }
 
   moveGoblin() {
-    const randomNumber = Math.floor(
-      Math.random() * this.fieldSize * this.fieldSize,
-    );
+    const a = Math.random() * this.fieldSize * this.fieldSize;
+    const randomNumber = Math.floor(a);
+    // const randomNumber = Math.floor(
+    //   Math.random() * this.fieldSize * this.fieldSize,
+    // );
 
     if (!isNaN(this.currentIndex)) {
       this.cells[this.currentIndex].classList.remove("icon");
@@ -72,10 +74,10 @@ export default class Field {
 
   setCursor(e) {
     if (e.target.classList.contains("icon")) {
-      e.target.style.cursor = "pointer";
-      // e.target.style.cursor = "url(../img/hammer.png)";
+      // e.target.style.cursor = "pointer";
+      e.target.style.cursor = "url(../img/hammer128.png)";
     } else if (!e.target.classList.contains("icon")) {
-      e.target.style.removeProperty('cursor');  
+      e.target.style.removeProperty("cursor");
     }
   }
 }
