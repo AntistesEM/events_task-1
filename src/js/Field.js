@@ -7,7 +7,7 @@ export default class Field {
     this.countBlow = 5;
     this.countAppearances = 0;
     this.gameOver = false;
-    this.setCursor = this.setCursor.bind(this);
+    // this.setCursor = this.setCursor.bind(this);
   }
 
   init() {
@@ -17,8 +17,8 @@ export default class Field {
     this.fieldEl.classList.add("field");
 
     this.fieldEl.addEventListener("click", this.attack.bind(this));
-    this.fieldEl.addEventListener("mouseover", this.setCursor.bind(this));
-    this.fieldEl.addEventListener("mouseout", this.setCursor.bind(this));
+    // this.fieldEl.addEventListener("mouseover", this.setCursor);
+    // this.fieldEl.addEventListener("mouseout", this.setCursor);
 
     for (let i = 0; i < this.fieldSize * this.fieldSize; i += 1) {
       const cellEl = document.createElement("div");
@@ -52,8 +52,8 @@ export default class Field {
       if (this.countAppearances === 5 || this.countBlow === 0) {
         console.log("over");
         clearInterval(this.intervalId);
-        this.fieldEl.removeEventListener("mouseover", this.setCursor);
-        this.fieldEl.removeEventListener("mouseout", this.setCursor);
+        // this.fieldEl.removeEventListener("mouseover", this.setCursor);
+        // this.fieldEl.removeEventListener("mouseout", this.setCursor);
         this.gameOver = true;
       }
     }
@@ -65,6 +65,7 @@ export default class Field {
         this.points += 1;
         this.countAppearances = 0;
         console.log("Ваши очки: " + this.points);
+        this.cells[this.currentIndex].classList.remove("icon");
       } else {
         this.countBlow -= 1;
         console.log("Ваши попытки: " + this.countBlow);
@@ -72,12 +73,12 @@ export default class Field {
     }
   }
 
-  setCursor(e) {
-    if (e.target.classList.contains("icon")) {
-      // e.target.style.cursor = "pointer";
-      e.target.style.cursor = "url(../img/hammer128.png)";
-    } else if (!e.target.classList.contains("icon")) {
-      e.target.style.removeProperty("cursor");
-    }
-  }
+  // setCursor(e) {
+  //   if (e.target.classList.contains("icon")) {
+  //     // e.target.style.cursor = "pointer";
+  //     e.target.style.cursor = "url(../img/hammer128.png)";
+  //   } else if (!e.target.classList.contains("icon")) {
+  //     e.target.style.removeProperty("cursor");
+  //   }
+  // }
 }

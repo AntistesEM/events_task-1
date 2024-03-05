@@ -27,3 +27,7 @@ body {
   background-size: cover;
   background-color: #000000;
 }
+
+.icon:hover {
+  cursor: url('../img/hammer128.png') auto;
+}
