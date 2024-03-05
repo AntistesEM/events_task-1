@@ -29,5 +29,5 @@ body {
 }
 
 .icon:hover {
-  cursor: url('../img/hammer128.png') auto;
+  cursor: url(../img/hammer128.png), pointer;
 }
